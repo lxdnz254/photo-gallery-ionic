@@ -1,6 +1,7 @@
 import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar } from '@ionic/react';
-import ExploreContainer from '../components/ExploreContainer';
+import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid } from '@ionic/react';
+import {images, people } from 'ionicons/icons';
+import LauncherContainer from '../components/LauncherContainer';
 import './Tab1.css';
 
 const Tab1: React.FC = () => {
@@ -8,16 +9,19 @@ const Tab1: React.FC = () => {
     <IonPage>
       <IonHeader>
         <IonToolbar>
-          <IonTitle>Tab 1</IonTitle>
+          <IonTitle>The Ionic Journey</IonTitle>
         </IonToolbar>
       </IonHeader>
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle size="large">Tab 1</IonTitle>
+            <IonTitle className="center" size="large">Tab 1</IonTitle>
           </IonToolbar>
         </IonHeader>
-        <ExploreContainer name="Tab 1 page" />
+        <IonGrid>
+          <LauncherContainer name="Photos" target="/tab2" icon={images} />
+          <LauncherContainer name="Employees" target="/tab3" icon={people}/>
+        </IonGrid>
       </IonContent>
     </IonPage>
   );
