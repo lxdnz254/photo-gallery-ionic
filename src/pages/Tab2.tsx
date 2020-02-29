@@ -1,10 +1,22 @@
-import React, { useState } from 'react';
-import { camera, trash, close } from 'ionicons/icons';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar,
-        IonFab, IonFabButton, IonIcon, IonGrid, IonRow,
-        IonCol, IonImg, IonActionSheet } from '@ionic/react';
-import './Tab2.css';
-import { usePhotoGallery, Photo } from '../hooks/usePhotoGallery';
+import React, { useState } from "react";
+import { camera, trash, close } from "ionicons/icons";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonFab,
+  IonFabButton,
+  IonIcon,
+  IonGrid,
+  IonRow,
+  IonCol,
+  IonImg,
+  IonActionSheet
+} from "@ionic/react";
+import "./Tab2.css";
+import { usePhotoGallery, Photo } from "../hooks/usePhotoGallery";
 
 const Tab2: React.FC = () => {
   const { photos, takePhoto, deletePhoto } = usePhotoGallery();
@@ -21,8 +33,10 @@ const Tab2: React.FC = () => {
           <IonRow>
             {photos.map((photo, index) => (
               <IonCol size="6" key={index}>
-                <IonImg onClick={() => setPhotoToDelete(photo)} 
-                src={photo.base64 ?? photo.webviewPath} />
+                <IonImg
+                  onClick={() => setPhotoToDelete(photo)}
+                  src={photo.base64 ?? photo.webviewPath}
+                />
               </IonCol>
             ))}
           </IonRow>
@@ -32,23 +46,26 @@ const Tab2: React.FC = () => {
             <IonIcon icon={camera}></IonIcon>
           </IonFabButton>
         </IonFab>
-        <IonActionSheet 
+        <IonActionSheet
           isOpen={!!photoToDelete}
-          buttons={[{
-            text: 'Delete',
-            role: 'destructive',
-            icon: trash,
-            handler: () => {
-              if (photoToDelete) {
-                deletePhoto(photoToDelete);
-                setPhotoToDelete(undefined);
+          buttons={[
+            {
+              text: "Delete",
+              role: "destructive",
+              icon: trash,
+              handler: () => {
+                if (photoToDelete) {
+                  deletePhoto(photoToDelete);
+                  setPhotoToDelete(undefined);
+                }
               }
+            },
+            {
+              text: "Cancel",
+              icon: close,
+              role: "cancel"
             }
-          }, {
-            text: 'Cancel',
-            icon: close,
-            role: 'cancel'
-          }]}
+          ]}
           onDidDismiss={() => setPhotoToDelete(undefined)}
         />
       </IonContent>

@@ -1,6 +1,17 @@
-import React, { useState } from 'react';
-import { IonAvatar, IonContent, IonHeader, IonItem, IonLabel, IonList, IonPage, IonTitle, IonToolbar, useIonViewWillEnter } from '@ionic/react';
-import './Tab3.css';
+import React, { useState } from "react";
+import {
+  IonAvatar,
+  IonContent,
+  IonHeader,
+  IonItem,
+  IonLabel,
+  IonList,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  useIonViewWillEnter
+} from "@ionic/react";
+import "./Tab3.css";
 
 interface Person {
   name: string;
@@ -10,12 +21,11 @@ interface Person {
 }
 
 const Tab3: React.FC = () => {
-
   const [people, setPeople] = useState<Person[]>([]);
 
   useIonViewWillEnter(async () => {
-    const result = await fetch('https://uifaces.co/api?limit=25', {
-      headers: { 'x-API-KEY': '873771d7760b846d51d025ac5804ab' }
+    const result = await fetch("https://uifaces.co/api?limit=25", {
+      headers: { "x-API-KEY": "873771d7760b846d51d025ac5804ab" }
     });
     const data = await result.json();
     setPeople(data);
@@ -30,7 +40,9 @@ const Tab3: React.FC = () => {
       </IonHeader>
       <IonContent>
         <IonList>
-          {people.map((person, idx) => <EmployeeItem key={idx} person={person} />)}
+          {people.map((person, idx) => (
+            <EmployeeItem key={idx} person={person} />
+          ))}
         </IonList>
       </IonContent>
     </IonPage>
@@ -41,7 +53,7 @@ const EmployeeItem: React.FC<{ person: Person }> = ({ person }) => {
   return (
     <IonItem>
       <IonAvatar slot="start">
-        <img src={person.photo} alt=""/>
+        <img src={person.photo} alt="" />
       </IonAvatar>
       <IonLabel>
         <h2>{person.name}</h2>
@@ -49,6 +61,6 @@ const EmployeeItem: React.FC<{ person: Person }> = ({ person }) => {
       </IonLabel>
     </IonItem>
   );
-}
+};
 
 export default Tab3;

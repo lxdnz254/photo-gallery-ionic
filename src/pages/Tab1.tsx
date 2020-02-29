@@ -1,8 +1,15 @@
-import React from 'react';
-import { IonContent, IonHeader, IonPage, IonTitle, IonToolbar, IonGrid } from '@ionic/react';
-import {images, people } from 'ionicons/icons';
-import LauncherContainer from '../components/LauncherContainer';
-import './Tab1.css';
+import React from "react";
+import {
+  IonContent,
+  IonHeader,
+  IonPage,
+  IonTitle,
+  IonToolbar,
+  IonGrid
+} from "@ionic/react";
+import { images, people } from "ionicons/icons";
+import LauncherContainer from "../components/LauncherContainer";
+import "./Tab1.css";
 
 const Tab1: React.FC = () => {
   return (
@@ -15,12 +22,14 @@ const Tab1: React.FC = () => {
       <IonContent>
         <IonHeader collapse="condense">
           <IonToolbar>
-            <IonTitle className="center" size="large">Tab 1</IonTitle>
+            <IonTitle className="center" size="large">
+              Tab 1
+            </IonTitle>
           </IonToolbar>
         </IonHeader>
         <IonGrid>
           <LauncherContainer name="Photos" target="/tab2" icon={images} />
-          <LauncherContainer name="Employees" target="/tab3" icon={people}/>
+          <LauncherContainer name="Employees" target="/tab3" icon={people} />
         </IonGrid>
       </IonContent>
     </IonPage>
